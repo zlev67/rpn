@@ -5,9 +5,9 @@ VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test1", "test1.vcxproj", "{1F6AB382-D537-4C33-9C36-1E78AA062894}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpn", "..\rpn\rpn.vcxproj", "{5BBE3FB9-B5EC-4949-98AC-4E7BFD4538DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpn", "rpn\rpn.vcxproj", "{5BBE3FB9-B5EC-4949-98AC-4E7BFD4538DF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest1", "..\UnitTest1\UnitTest1.vcxproj", "{2E492DD5-134C-9483-A1EE-C9DABA804943}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest1", "UnitTest1\UnitTest1.vcxproj", "{2E492DD5-134C-9483-A1EE-C9DABA804943}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5BBE3FB9-B5EC-4949-98AC-4E7BFD4538DF} = {5BBE3FB9-B5EC-4949-98AC-4E7BFD4538DF}
 	EndProjectSection
