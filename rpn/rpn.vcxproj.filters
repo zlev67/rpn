@@ -35,5 +35,8 @@
     <ClInclude Include="include\RpnCalculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\RpnDef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

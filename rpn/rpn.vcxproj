@@ -139,6 +139,7 @@ copy $(ProjectDir)$(Platform)\$(Configuration)\*.lib $(ProjectDir)lib\</Command>
     <ClInclude Include="include\ExprToRpn.h" />
     <ClInclude Include="include\Numeric.h" />
     <ClInclude Include="include\RpnCalculator.h" />
+    <ClInclude Include="include\RpnDef.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

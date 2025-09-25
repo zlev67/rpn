@@ -34,21 +34,56 @@
 #define RPN_API __declspec(dllimport)
 #endif
 
+// RpnCalculator provides an interface for evaluating mathematical expressions using Reverse Polish Notation (RPN).
+// It supports adding custom functions and operators, as well as standard mathematical operations.
+//
+// Usage:
+//   - Add custom or standard functions/operators.
+//   - Evaluate expressions in infix or RPN format.
+//
+// Members:
+//   calc: Pointer to the internal FunctionShuntingYard engine.
+//   verbose: Controls verbosity of output (e.g., prints RPN steps if enabled).
 class RPN_API RpnCalculator
 {
-	private:
-		FunctionShuntingYard *calc;
-		int verbose = 0;
+private:
+    // Pointer to the internal shunting yard calculator engine.
+    FunctionShuntingYard *calc;
+    // Verbosity flag for debugging or detailed output.
+    int verbose = 0;
 
-	public:
-		RpnCalculator(int _verbose = 0);
-		virtual ~RpnCalculator() ;
-		// Push an item onto the RPN stack
-		void addFunction(std::string const& name, function_ptr_t functionUniquePtr);
-		void addOperator(std::string const& name, operator_ptr_t operatorUniquePtr);
-		void addStandardFunctions();
-		void addStandardOperators();
-		std::string calculate_rpn(const std::string & input_rpn);
-		std::string calculate(const std::string & input);
+public:
+    // Constructs an RpnCalculator instance.
+    // _verbose: Set to nonzero for verbose output.
+    RpnCalculator(int _verbose = 0);
+
+    // Destructor for RpnCalculator.
+    virtual ~RpnCalculator();
+
+    // Registers a custom function with the calculator.
+    // name: The function name.
+    // functionUniquePtr: Unique pointer to the function implementation.
+    void addFunction(std::string const& name, function_ptr_t functionUniquePtr);
+
+    // Registers a custom operator with the calculator.
+    // name: The operator symbol.
+    // operatorUniquePtr: Unique pointer to the operator implementation.
+    void addOperator(std::string const& name, operator_ptr_t operatorUniquePtr);
+
+    // Adds a set of standard mathematical functions (e.g., sin, cos, log).
+    void addStandardFunctions();
+
+    // Adds a set of standard mathematical operators (e.g., +, -, *, /).
+    void addStandardOperators();
+
+    // Evaluates an expression in RPN format.
+    // input_rpn: The RPN expression as a string.
+    // Returns: The result as a string.
+    std::string calculate_rpn(const std::string & input_rpn);
+
+    // Evaluates an expression in infix format (converts to RPN internally).
+    // input: The infix expression as a string.
+    // Returns: The result as a string.
+    std::string calculate(const std::string & input);
 };
 

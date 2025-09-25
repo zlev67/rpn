@@ -35,20 +35,37 @@
 #include "Numeric.h"
 
 
+// Represents an arithmetic operator used in the RPN calculator.
+// This class implements the IOperatorInfo interface and provides details about the operator,
+// such as its precedence, associativity, and calculation logic.
 class ArithmeticOperator : public IOperatorInfo
 {
+    // The type of the operator (e.g., +, -, *, /, etc.).
     std::string operator_type;
+
+    // Indicates whether the operator is right-associative.
     bool m_isRightAssociative;
+
+    // The precedence of the operator. Higher values indicate higher precedence.
     int m_precedence;
+
 public:
+    // Destructor for the ArithmeticOperator class.
     virtual ~ArithmeticOperator()
     {
     }
+
+    // Constructor for the ArithmeticOperator class.
+    // Args:
+    // - op_type: The type of the operator (e.g., +, -, *, /, etc.).
+    // - _verbose: Optional verbosity level (default is 0).
     ArithmeticOperator(std::string op_type, int _verbose = 0) : operator_type(op_type)
     {
         m_isRightAssociative = false;
         m_precedence = -1;
-        if (op_type == "|" )
+
+        // Set precedence and associativity based on the operator type.
+        if (op_type == "|")
             m_precedence = 1;
         else if (op_type == "^")
             m_precedence = 2;
@@ -66,23 +83,38 @@ public:
             m_isRightAssociative = true;
         }
     }
+
+    // Returns the number of parameters the operator takes.
+    // For arithmetic operators, this is always 2.
     virtual int num_parameters()
     {
         return 2;
     }
+
+    // Returns whether the operator is right-associative.
     virtual bool isRightAssociative()
     {
         return m_isRightAssociative;
     }
+
+    // Returns the precedence of the operator.
     virtual int precedence()
     {
         return m_precedence;
     }
+
+    // Performs the calculation for the operator given its arguments.
+    // Args:
+    // - args: A vector of strings representing the arguments for the operator.
+    // Returns:
+    // - A string representing the result of the calculation.
     virtual std::string calculate(const std::vector<std::string>& args)
     {
         long double a = Numeric::str_to_ld(args[0]);
         long double b = Numeric::str_to_ld(args[1]);
         std::string res = "";
+
+        // Perform the calculation based on the operator type.
         if (operator_type == "+")
             res = std::to_string(a + b);
         else if (operator_type == "-")
@@ -105,30 +137,47 @@ public:
             res = std::to_string((long long)b >> (long long)a);
         else if (operator_type == "**")
             res = std::to_string(std::pow(b, a));
+
         return res;
     }
 };
 
+// Represents a generic function for the RPN calculator.
+// This class implements the IFunctionInfo interface and allows registration of custom functions
+// by providing a function pointer for the calculation logic and specifying the number of parameters.
 class GenericFunc : public IFunctionInfo
 {
+    // Pointer to the function that performs the calculation.
     std::string(*calculate_func)(const std::vector<std::string>& args);
+
+    // Number of parameters the function takes.
     int n_parameters;
 public:
-        
+    // Constructs a GenericFunc with the specified number of parameters and calculation function.
+    // Args:
+    // - parameters: The number of parameters the function takes.
+    // - p_calculate_func: Pointer to the function that performs the calculation.
     GenericFunc(int parameters, std::string(*p_calculate_func)(const std::vector<std::string>& args))
     {
         n_parameters = parameters;
         calculate_func = p_calculate_func;
     }
+
+    // Returns the number of parameters the function takes.
     virtual int num_parameters()
     {
         return n_parameters;
     }
+
+    // Performs the calculation for the function given its arguments.
+    // Args:
+    // - args: A vector of strings representing the arguments for the function.
+    // Returns:
+    // - A string representing the result of the calculation.
     virtual std::string calculate(const std::vector<std::string>& args)
     {
         return calculate_func(args);
     }
-
 };
 
 class AverageFunc : public IFunctionInfo
