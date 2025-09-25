@@ -29,10 +29,11 @@
 
 
 
-std::vector<std::string> FunctionShuntingYard::tokenize(const std::string& expression) {
+std::vector<std::string> FunctionShuntingYard::tokenize(const std::string& expression, bool rpn_input) {
     std::vector<std::string> tokens;
     std::string cleanExpr = expression;
-    cleanExpr.erase(std::remove_if(cleanExpr.begin(), cleanExpr.end(), ::isspace), cleanExpr.end());
+    if (!rpn_input)
+        cleanExpr.erase(std::remove_if(cleanExpr.begin(), cleanExpr.end(), ::isspace), cleanExpr.end());
     const std::regex tokenRegex(
         R"((0[xX][0-9A-Fa-f]+)"        // hex prefix
         R"(|0[oO][0-7]+)"               // octal prefix
@@ -79,7 +80,7 @@ std::vector<std::string> FunctionShuntingYard::tokenize(const std::string& expre
     return tokens;
 }
 std::vector<std::string> FunctionShuntingYard::infixToRPN(const std::string& infix) {
-    std::vector<std::string> tokens = tokenize(infix);
+    std::vector<std::string> tokens = tokenize(infix, false);
     std::vector<std::string> output;
     std::stack<std::string> operatorStack;
     std::stack<int> arityStack;

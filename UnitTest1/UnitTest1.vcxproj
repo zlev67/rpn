@@ -160,9 +160,6 @@
     <ClCompile Include="UnitTest1.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\rpn\rpn.vcxproj">
       <Project>{5bbe3fb9-b5ec-4949-98ac-4e7bfd4538df}</Project>
     </ProjectReference>

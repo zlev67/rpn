@@ -175,7 +175,7 @@ public:
     }
 
     // Tokenizes an infix expression string into a vector of tokens.
-    std::vector<std::string> tokenize(const std::string& expression);
+    std::vector<std::string> tokenize(const std::string& expression, bool rpn_input);
     // Converts an infix expression string to a vector of RPN tokens.
     std::vector<std::string> infixToRPN(const std::string& infix);
     // Evaluates an RPN expression and returns the result as a string.

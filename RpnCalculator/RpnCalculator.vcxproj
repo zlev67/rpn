@@ -95,7 +95,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(SolutionDir)\rpn\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\res;$(ProjectDir)\include;$(SolutionDir)\rpn\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -196,16 +196,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Calculator.cpp" />
-    <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\RpnCalculatorDlg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Calculator.h" />
     <ClInclude Include="include\framework.h" />
     <ClInclude Include="include\pch.h" />
-    <ClInclude Include="include\resource.h" />
     <ClInclude Include="include\RpnCalculatorDlg.h" />
     <ClInclude Include="include\targetver.h" />
+    <ClInclude Include="res\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Rpn_Calculator.ico" />

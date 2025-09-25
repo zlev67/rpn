@@ -45,4 +45,6 @@ public:
     afx_msg void OnBnClickedButton1();
     afx_msg void OnEnChangeEdit1();
     afx_msg void OnBnClickedCancel();
+    CButton InfixButton;
+    CButton RpnButton;
 };

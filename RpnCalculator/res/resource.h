@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by RpnCalculator.rc
+// Used by Rpn_Calculator.rc
 //
 #define IDM_ABOUTBOX                    0x0010
 #define IDS_ABOUTBOX                    101

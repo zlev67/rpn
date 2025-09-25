@@ -31,7 +31,7 @@ BOOL CRpnCalculatorDlg::OnInitDialog()
 
     // Register global hotkey: Ctrl+Alt+R
     RegisterHotKey(m_hWnd, HOTKEY_ID, MOD_CONTROL | MOD_ALT, 'R');
-
+    CheckRadioButton(IDC_RADIO1, IDC_RADIO2, IDC_RADIO1);
     // Hide window at startup
     ShowWindow(SW_HIDE);
 
@@ -61,9 +61,16 @@ void CRpnCalculatorDlg::OnBnClickedButtonCalc()
     // Convert CString to std::string
     CT2A asciiStr(expr);
     std::string input(asciiStr);
-
+    std::string result;
     try {
-        std::string result = calc->calculate(input);
+        if (IsDlgButtonChecked(IDC_RADIO1) == BST_CHECKED) 
+        {
+            result = calc->calculate(input);
+        }
+        else
+        {
+            result = calc->calculate_rpn(input);
+        }
         CString cresult(result.c_str());
         m_staticResult.SetWindowText(cresult);
     }
@@ -78,6 +85,8 @@ void CRpnCalculatorDlg::DoDataExchange(CDataExchange* pDX)
     CDialogEx::DoDataExchange(pDX);
     DDX_Control(pDX, IDC_EDIT_INPUT, m_editInput);
     DDX_Control(pDX, IDC_STATIC_RESULT, m_staticResult);
+    DDX_Control(pDX, IDC_RADIO1, InfixButton);
+    DDX_Control(pDX, IDC_RADIO2, RpnButton);
 }
 
 void CRpnCalculatorDlg::OnDestroy()

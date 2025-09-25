@@ -25,6 +25,7 @@
 * ============================================================================== =*/
 #include <cmath>
 #include <regex>
+#include <bitset>
 #include "RpnCalculator.h"
 #include <windows.h>
 
@@ -168,7 +169,9 @@ void RPN_API RpnCalculator::addStandardFunctions()
     calc->add_function("ln", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(std::log(Numeric::str_to_ld(args[0]))); })));
     calc->add_function("lg", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(std::log10(Numeric::str_to_ld(args[0]))); })));
     calc->add_function("expn", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(std::exp(Numeric::str_to_ld(args[0]))); })));
-    calc->add_function("hex", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { std::stringstream ss; ss << std::hex << Numeric::str_to_ld(args[0]); return ss.str();    return ss.str(); })));
+    calc->add_function("hex", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { std::stringstream ss; ss << std::hex << (long long)Numeric::str_to_ld(args[0]); return ss.str();    return ss.str(); })));
+    calc->add_function("oct", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { std::stringstream ss; ss << std::oct << (long long)Numeric::str_to_ld(args[0]); return ss.str();    return ss.str(); })));
+    calc->add_function("bin", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { std::stringstream ss; ss << std::bitset<64>((long long)Numeric::str_to_ld(args[0])); return ss.str();    return ss.str(); })));
 
     calc->add_function("sqrt", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(std::sqrt(Numeric::str_to_ld(args[0]))); })));
     calc->add_function("abs", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(std::abs(Numeric::str_to_ld(args[0]))); })));
@@ -207,7 +210,7 @@ RPN_API RpnCalculator::~RpnCalculator()
 
 std::string RPN_API RpnCalculator::calculate_rpn(const std::string &input_rpn)
 {
-    std::vector<std::string> rpn = calc->tokenize(input_rpn);
+    std::vector<std::string> rpn = calc->tokenize(input_rpn, true);
     if (verbose)
         calc->printRPN(rpn);
     std::string res = calc->evaluateRPN(rpn);
