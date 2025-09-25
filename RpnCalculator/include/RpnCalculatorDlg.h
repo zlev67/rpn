@@ -47,4 +47,5 @@ public:
     afx_msg void OnBnClickedCancel();
     CButton InfixButton;
     CButton RpnButton;
+    afx_msg void OnStnClickedStaticResult();
 };
