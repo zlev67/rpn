@@ -1,6 +1,6 @@
 #include "CppUnitTest.h"
-#include "../rpn/RpnCalculator.h"
-#include "../rpn/ExprToRpn.h"
+#include "RpnCalculator.h"
+#include "ExprToRpn.h"
 
 
 
@@ -14,17 +14,19 @@ namespace UnitTest1
 		TEST_METHOD(TestMethod3)
 		{
 
-            FunctionShuntingYard converter;
-
             std::vector<std::string> testExpressions = {
+                "25 + avg(1, 2, 3, 4, 5) + 15",
+                "-1+2+3",
+                "-1E+3+21 - 1"
                 "1+1*[3*(2+3*{1+3})]",
+                "0x5<<1",
                 "sin(3.14159 / 2)",
+                "sin(g2r(90))",
                 "cos(0) + sin(1.5708)",
                 "max(5, 3) * min(2, 4)",
                 "sqrt(pow(3, 2) + pow(4, 2))",
-                "log(exp(1))",
+                "ln(expn(1))",
                 "abs(-5) + floor(3.7)",
-                "avg(1, 2, 3, 4, 5)",
                 "sum(10, 20, 30)",
                 "sin(max(1, 2)) + cos(min(3, 4))",
                 "pow(2, 3) + sqrt(16)",
@@ -32,18 +34,12 @@ namespace UnitTest1
                 "3 + sin(0) * 2 + max(1, 5)"
             };
 
+            RpnCalculator calc(1);
             for (const std::string& expr : testExpressions) {
                 try {
                     std::cout << "Infix:  " << expr << std::endl;
-
-                    std::vector<std::string> rpn = converter.infixToRPN(expr);
-                    std::cout << "RPN:    ";
-                    converter.printRPN(rpn);
-
-                    std::string result = converter.evaluateRPN(rpn);
-                    std::cout << "Result: " << result << std::endl;
-                    std::cout << "------------------------" << std::endl;
-
+                    std::string out = calc.calculate(expr);
+                    std::cout << out << std::endl;
                 }
                 catch (const std::exception& e) {
                     std::cout << "Error: " << e.what() << std::endl;
@@ -52,21 +48,21 @@ namespace UnitTest1
             }
         }
 
-		TEST_METHOD(TestMethod2)
-		{
-			RpnCalculator calculator;
-			calculator.visualToRpn("1+1+1+(2+3+4+5+6)");
-			// Add more assertions to verify the behavior of the calculator
-			Assert::IsTrue(true); // Placeholder assertion
-		}
+		//TEST_METHOD(TestMethod2)
+		//{
+		//	RpnCalculator calculator;
+		//	calculator.visualToRpn("1+1+1+(2+3+4+5+6)");
+		//	// Add more assertions to verify the behavior of the calculator
+		//	Assert::IsTrue(true); // Placeholder assertion
+		//}
 
-		TEST_METHOD(TestMethod1)
-		{
-			RpnCalculator calculator;
-			calculator.calculate("3 4 +");
-			calculator.calculate("3.14 1_000_000 *");
-			// Add more assertions to verify the behavior of the calculator
-			Assert::IsTrue(true); // Placeholder assertion
-		}
+		//TEST_METHOD(TestMethod1)
+		//{
+		//	RpnCalculator calculator;
+		//	calculator.calculate("3 4 +");
+		//	calculator.calculate("3.14 1_000_000 *");
+		//	// Add more assertions to verify the behavior of the calculator
+		//	Assert::IsTrue(true); // Placeholder assertion
+		//}
 	};
 }
