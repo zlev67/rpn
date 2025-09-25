@@ -155,6 +155,15 @@ public:
 
 };
 
+void RPN_API RpnCalculator::addFunction(std::string const& name, function_ptr_t functionUniquePtr)
+{
+    calc->add_function(name, std::move(functionUniquePtr));
+}
+
+void RPN_API RpnCalculator::addOperator(std::string const& name, operator_ptr_t operatorUniquePtr)
+{
+    calc->add_operator(name, std::move(operatorUniquePtr));
+}
 
 void RPN_API RpnCalculator::addStandardFunctions()
 {

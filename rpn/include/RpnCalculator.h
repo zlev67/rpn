@@ -44,6 +44,8 @@ class RPN_API RpnCalculator
 		RpnCalculator(int _verbose = 0);
 		virtual ~RpnCalculator() ;
 		// Push an item onto the RPN stack
+		void addFunction(std::string const& name, function_ptr_t functionUniquePtr);
+		void addOperator(std::string const& name, operator_ptr_t operatorUniquePtr);
 		void addStandardFunctions();
 		void addStandardOperators();
 		std::string calculate_rpn(const std::string & input_rpn);

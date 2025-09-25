@@ -163,13 +163,13 @@ public:
     }
 
     // Registers a new operator with the given name and operator information.
-    void add_operator(std::string name, operator_ptr_t operator_info)
+    void add_operator(std::string const & name, operator_ptr_t operator_info)
     {
         operators[name] = std::move(operator_info);
     }
 
     // Registers a new function with the given name and function information.
-    void add_function(std::string name, function_ptr_t function_info)
+    void add_function(std::string const & name, function_ptr_t function_info)
     {
         functions[name] = std::move(function_info);
     }
