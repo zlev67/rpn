@@ -30,6 +30,7 @@
 class Numeric
 {
 public:
+    static bool isString(const std::string& _token);
     static bool isNumber(const std::string& token) ;
     static long double str_to_ld(std::string _token) ;
 

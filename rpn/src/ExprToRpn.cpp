@@ -41,6 +41,7 @@ std::vector<std::string> FunctionShuntingYard::tokenize(const std::string& expre
         R"(|[0-9A-Fa-f]+[hH])"          // hex suffix
         R"(|[0-7]+[oO])"                // octal suffix
         R"(|[01]+[bB])"                 // binary suffix
+        R"(|"[^"]*")"                   // quoted strings
         R"([+-]?|\d+\.\d+|\d+\.\d*|\.\d+|\d+)" // decimal/float
         R"(|[+-]?\d+(?:\.\d*)?[eE][+-]?\d+)"         // scientific notation with integer or decimal base
         R"(|[+-]?\.\d+[eE][+-]?\d+)"                 // scientific notation starting with decimal point
@@ -88,7 +89,7 @@ std::vector<std::string> FunctionShuntingYard::infixToRPN(const std::string& inf
     for (size_t i = 0; i < tokens.size(); ++i) {
         const std::string& token = tokens[i];
 
-        if (!isOperator(token) && (Numeric::isNumber(token)) )
+        if (!isOperator(token) && ((Numeric::isNumber(token))||Numeric::isString(token)))
         {
             output.push_back(token);
         }
@@ -177,7 +178,7 @@ std::string FunctionShuntingYard::evaluateRPN(const std::vector<std::string>& rp
 {
     std::stack<std::string> stack;
     for (const std::string& token : rpn) {
-        if (Numeric::isNumber(token)) {
+        if (Numeric::isNumber(token) || Numeric::isString(token)) {
             stack.push(token);
         }
         else if (isOperator(token))
@@ -202,7 +203,7 @@ std::string FunctionShuntingYard::evaluateRPN(const std::vector<std::string>& rp
         else
             if (isFunction(token))
             {
-                auto it = functions.find(token);
+                auto it = functions.find(to_lower(token));
                 if (it == functions.end())
                     throw std::runtime_error("Unknown function: " + token);
                 int expectedArity = getFunctionArity(token);

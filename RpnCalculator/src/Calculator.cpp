@@ -2,7 +2,6 @@
 // RpnCalculator.cpp : Defines the class behaviors for the application.
 //
 
-#include "pch.h"
 #include "framework.h"
 #include "Calculator.h"
 #include "RpnCalculatorDlg.h"

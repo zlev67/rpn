@@ -99,6 +99,22 @@ long double Numeric :: str_to_ld(std::string _token)
     return res;
 }
 
+bool Numeric::isString(const std::string& _token)
+/**
+ * @brief Checks if a string represents a valid string.
+ *
+ * This function determines whether the input string is a valid string literal.
+ */
+{
+    if (_token.empty())
+        return false;
+    std::string token = _token;
+    if (token[0] == '"' and token[token.length()-1]=='"')
+        return true;
+
+    return false;
+}
+
 
 bool Numeric::isNumber(const std::string& _token)
 /**

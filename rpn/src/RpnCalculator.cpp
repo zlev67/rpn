@@ -256,12 +256,12 @@ void RPN_API RpnCalculator::addStandardOperators()
 
 }
 
-RPN_API RpnCalculator::RpnCalculator(int _verbose) : verbose(_verbose)
+RpnCalculator::RpnCalculator(int _verbose) : verbose(_verbose)
 {
     calc = new FunctionShuntingYard();
 }
 
-RPN_API RpnCalculator::~RpnCalculator()
+RpnCalculator::~RpnCalculator()
 {
     delete calc;
 }

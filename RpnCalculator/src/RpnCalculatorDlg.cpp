@@ -1,11 +1,11 @@
 // RpnMfcAppDlg.cpp
-#include "pch.h"
 #include "framework.h"
 #include "Calculator.h"
 #include "RpnCalculatorDlg.h"
 #include "afxdialogex.h"
 #include "Resource.h"
 #include "RpnCalculator.h" // Include your RPN logic
+#include "../MoreFuncs/CurrencyAndStock.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -18,8 +18,10 @@ CRpnCalculatorDlg::CRpnCalculatorDlg(CWnd* pParent /*=nullptr*/)
     calc = new RpnCalculator();
     calc->addStandardFunctions();
     calc->addStandardOperators();
-
+    calc->addFunction("currency", std::unique_ptr<Currency>(new Currency()));
+    calc->addFunction("stock", std::unique_ptr<Stock>(new Stock()));
 }
+
 CRpnCalculatorDlg::~CRpnCalculatorDlg()
 {
     delete calc;

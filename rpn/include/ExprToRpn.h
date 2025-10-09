@@ -58,6 +58,11 @@ private:
     // Set of right-associative operator symbols (e.g., "^").
     //std::unordered_set<std::string> rightAssociative = { "^" };
 
+    static std::string to_lower(std::string s) {
+        std::transform(s.begin(), s.end(), s.begin(),
+            [](unsigned char c) { return std::tolower(c); });
+        return s;
+    }
 
     // helpers
     static bool isLeftBracket(const std::string& s) {
@@ -81,8 +86,10 @@ private:
     bool isOperator(const std::string& token) const {
         return operators.find(token) != operators.end();
     }
-    bool isFunction(const std::string& token) const {
-        return functions.find(token) != functions.end();
+    bool isFunction(const std::string& token) const 
+    {
+        std::string name = to_lower(token);
+        return functions.find(name) != functions.end();
     }
     int getPrecedence(const std::string& op) const {
         auto it = operators.find(op);
@@ -93,7 +100,8 @@ private:
         return (it != operators.end()) ? it->second.get()->isRightAssociative() : false;
     }
     int getFunctionArity(const std::string& func) const {
-        auto it = functions.find(func);
+        std::string name = to_lower(func);
+        auto it = functions.find(name);
         return (it != functions.end()) ? it->second.get()->num_parameters() : 0;
     }
 
@@ -114,8 +122,9 @@ public:
     }
 
     // Registers a new function with the given name and function information.
-    void add_function(std::string const & name, function_ptr_t function_info)
+    void add_function(std::string const & _name, function_ptr_t function_info)
     {
+        std::string name = to_lower(_name);
         functions[name] = std::move(function_info);
     }
 
