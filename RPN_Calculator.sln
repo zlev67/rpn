@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoreFuncs", "MoreFuncs\More
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "calc", "calc\calc.vcxproj", "{4DAF0104-65C8-4AC0-AAD2-6C7F63C9D271}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{DBE9999D-346E-CA63-6964-F3B7FC1D42B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -67,6 +69,10 @@ Global
 		{4DAF0104-65C8-4AC0-AAD2-6C7F63C9D271}.Release|x64.Build.0 = Release|x64
 		{4DAF0104-65C8-4AC0-AAD2-6C7F63C9D271}.Release|x86.ActiveCfg = Release|Win32
 		{4DAF0104-65C8-4AC0-AAD2-6C7F63C9D271}.Release|x86.Build.0 = Release|Win32
+		{DBE9999D-346E-CA63-6964-F3B7FC1D42B4}.Debug|x64.ActiveCfg = Debug
+		{DBE9999D-346E-CA63-6964-F3B7FC1D42B4}.Debug|x86.ActiveCfg = Debug
+		{DBE9999D-346E-CA63-6964-F3B7FC1D42B4}.Release|x64.ActiveCfg = Release
+		{DBE9999D-346E-CA63-6964-F3B7FC1D42B4}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

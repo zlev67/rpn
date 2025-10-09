@@ -1,17 +1,8 @@
 #pragma once
-#include <string>
 
 #ifdef MOREFUNCS_EXPORTS
 #define MOREFUNCS_API __declspec(dllexport)
 #else
 #define MOREFUNCS_API __declspec(dllimport)
 #endif
-
-class WinInetGet
-{
-	static std::string get_last_error_string();
-public:
-	std::string get_request(std::wstring url);
-
-};
 

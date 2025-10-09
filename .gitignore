@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /rpn/lib/rpn.dll
+/MoreFuncs/lib/MoreFuncs.dll
+/MoreFuncs/lib/MoreFuncs.lib

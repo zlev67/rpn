@@ -4,7 +4,9 @@
 
 This project provides:
 - **RPN Calculator DLL**: A reusable C++14 library for parsing and evaluating mathematical expressions using Reverse Polish Notation (RPN). The DLL is designed for extensibility, allowing users to implement custom functions and operators. It is also capable of converting infix notation to RPN and calculating the result of the expression.
+- **MoreFunctions**: examples of complex functions implementations: retrieving stok by name, retrieving currency conversion, etc.
 - **RPN Calculator Executable**: A standalone calculator application that leverages the DLL for RPN and infix expression evaluation.
+- **c**: command line calculator to quickly execute the calculation; 
 
 ---
 
@@ -14,9 +16,8 @@ This project provides:
 - Can convert infix expressions to RPN automatically and evaluate them.
 - Built-in standard mathematical functions and operators, including:
   - Arithmetic: `+`, `-`, `*`, `/`, `%`, `**`, `|`, `&`, `^`, `<<`, `>>`
-  - Functions: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `ln`, `lg`, `expn`, `sqrt`, `abs`, `floor`, `ceil`, `log`, `pow`, `avg`, `g2r`, `r2g`, `hex`, `oct`, `bin`
+  - Functions: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `ln`, `lg`, `expn`, `sqrt`, `abs`, `floor`, `ceil`, `log`, `pow`, `avg`, `g2r`, `r2g`, `hex`, `oct`, `bin`, etc.
 - Easily extensible: users can add custom functions and operators by implementing simple interfaces.
-- Exception-safe and memory-leak free (C++14).
 
 ---
 

@@ -235,6 +235,9 @@ void RPN_API RpnCalculator::addStandardFunctions()
     calc->add_function("abs", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(std::abs(Numeric::str_to_ld(args[0]))); })));
     calc->add_function("floor", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(std::floor(Numeric::str_to_ld(args[0]))); })));
     calc->add_function("ceil", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(std::ceil(Numeric::str_to_ld(args[0]))); })));
+    calc->add_function("c2f", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string(1.8 * (Numeric::str_to_ld(args[0])) + 32); })));
+    calc->add_function("f2c", std::unique_ptr<GenericFunc>(new GenericFunc(1, [](const std::vector<std::string>& args) { return std::to_string((Numeric::str_to_ld(args[0]) - 32)/1.8); })));
+
     calc->add_function("log", std::unique_ptr<GenericFunc>(new GenericFunc(2, [](const std::vector<std::string>& args) { return std::to_string(std::log(Numeric::str_to_ld(args[0])) / std::log(Numeric::str_to_ld(args[1]))); })));
     calc->add_function("pow", std::unique_ptr<GenericFunc>(new GenericFunc(2, [](const std::vector<std::string>& args) { return std::to_string(std::pow(Numeric::str_to_ld(args[0]), Numeric::str_to_ld(args[1]))); })));
     calc->add_function("avg", std::unique_ptr<AverageFunc>(new AverageFunc()));

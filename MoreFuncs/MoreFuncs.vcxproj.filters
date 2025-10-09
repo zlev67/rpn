@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CurrencyAndStock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WinInetGet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Defs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
