@@ -126,17 +126,22 @@ BEGIN_MESSAGE_MAP(CRpnCalculatorDlg, CDialogEx)
     ON_MESSAGE(WM_HOTKEY, &CRpnCalculatorDlg::OnHotKey)
     ON_BN_CLICKED(IDC_BUTTON_CALC, &CRpnCalculatorDlg::OnBnClickedButtonCalc)
     ON_BN_CLICKED(IDC_RADIO1, &CRpnCalculatorDlg::OnBnClickedRadio1)
+    ON_BN_CLICKED(IDC_BUTTON_HELP, &CRpnCalculatorDlg::OnBnClickedButtonHelp)
     ON_BN_CLICKED(IDCANCEL, &CRpnCalculatorDlg::OnBnClickedCancel)
 END_MESSAGE_MAP()
+
+void CRpnCalculatorDlg::OnBnClickedButtonHelp()
+{
+    HINSTANCE result = ShellExecute(NULL, _T("open"),
+        _T("https://www.example.com"),
+        NULL, NULL, SW_SHOWNORMAL);
+}
+
 void CRpnCalculatorDlg::OnBnClickedRadio1()
 {
     // TODO: Add your control notification handler code here
 }
 
-void CRpnCalculatorDlg::OnBnClickedButton1()
-{
-    // TODO: Add your control notification handler code here
-}
 
 void CRpnCalculatorDlg::OnEnChangeEdit1()
 {

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - Supported Functions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+        }
+        
+        .category h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .function {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .function:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        .function-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .function-syntax {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+            margin: 10px 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .function-description {
+            color: #555;
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+        
+        .function-params {
+            background: #e7f3ff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .function-params strong {
+            color: #0066cc;
+        }
+        
+        .function-example {
+            background: #fff3cd;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+        
+        .param-count {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+        
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📐 Supported Functions</h1>
+            <p>Complete reference guide for calculator functions</p>
+        </header>
+        
+        <div class="content">
+            <div class="category">
+                <h2>🔄 Angle Conversion</h2>
+                
+                <div class="function">
+                    <div class="function-name">g2r <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">g2r(degrees)</div>
+                    <div class="function-description">
+                        Converts degrees to radians. This function multiplies the input angle by π/180 to convert from degrees to radians.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> degrees - Angle value in degrees
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> g2r(180) → 3.14159... (π radians)
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">r2g <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">r2g(radians)</div>
+                    <div class="function-description">
+                        Converts radians to degrees. This function multiplies the input angle by 180/π to convert from radians to degrees.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> radians - Angle value in radians
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> r2g(3.14159) → 180 (degrees)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>📐 Trigonometric Functions</h2>
+                
+                <div class="function">
+                    <div class="function-name">sin <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">sin(x)</div>
+                    <div class="function-description">
+                        Calculates the sine of an angle. The input should be in radians.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Angle in radians
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> sin(1.5708) → 1.0 (sin of π/2)
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">asin <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">asin(x)</div>
+                    <div class="function-description">
+                        Calculates the inverse sine (arcsine) of a value. Returns an angle in radians. Input must be between -1 and 1.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Value between -1 and 1
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> asin(0.5) → 0.5236 (30° in radians)
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">cos <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">cos(x)</div>
+                    <div class="function-description">
+                        Calculates the cosine of an angle. The input should be in radians.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Angle in radians
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> cos(0) → 1.0
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">acos <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">acos(x)</div>
+                    <div class="function-description">
+                        Calculates the inverse cosine (arccosine) of a value. Returns an angle in radians. Input must be between -1 and 1.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Value between -1 and 1
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> acos(0.5) → 1.0472 (60° in radians)
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">tan <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">tan(x)</div>
+                    <div class="function-description">
+                        Calculates the tangent of an angle. The input should be in radians.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Angle in radians
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> tan(0.7854) → 1.0 (tan of π/4)
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">atan <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">atan(x)</div>
+                    <div class="function-description">
+                        Calculates the inverse tangent (arctangent) of a value. Returns an angle in radians.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Any numeric value
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> atan(1) → 0.7854 (45° in radians)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>📊 Logarithmic & Exponential</h2>
+                
+                <div class="function">
+                    <div class="function-name">ln <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">ln(x)</div>
+                    <div class="function-description">
+                        Calculates the natural logarithm (base e) of a number. Input must be positive.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Positive number
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> ln(2.71828) → 1.0
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">lg <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">lg(x)</div>
+                    <div class="function-description">
+                        Calculates the base-10 logarithm of a number. Input must be positive.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Positive number
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> lg(100) → 2.0
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">log <span class="param-count">2 parameters</span></div>
+                    <div class="function-syntax">log(x, base)</div>
+                    <div class="function-description">
+                        Calculates the logarithm of x with a custom base. Both parameters must be positive.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter 1:</strong> x - Number to calculate log of<br>
+                        <strong>Parameter 2:</strong> base - Logarithm base
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> log(8, 2) → 3.0 (2³ = 8)
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">expn <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">expn(x)</div>
+                    <div class="function-description">
+                        Calculates e raised to the power of x (e^x), where e is Euler's number (approximately 2.71828).
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Exponent value
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> expn(1) → 2.71828
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">pow <span class="param-count">2 parameters</span></div>
+                    <div class="function-syntax">pow(base, exponent)</div>
+                    <div class="function-description">
+                        Raises a base number to a specified power (base^exponent).
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter 1:</strong> base - Base number<br>
+                        <strong>Parameter 2:</strong> exponent - Power to raise base to
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> pow(2, 8) → 256
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>🔢 Number System Conversion</h2>
+                
+                <div class="function">
+                    <div class="function-name">hex <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">hex(number)</div>
+                    <div class="function-description">
+                        Converts a decimal number to hexadecimal representation (base 16). Uses digits 0-9 and letters a-f.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> number - Decimal number to convert
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> hex(255) → "ff"
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">oct <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">oct(number)</div>
+                    <div class="function-description">
+                        Converts a decimal number to octal representation (base 8). Uses digits 0-7.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> number - Decimal number to convert
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> oct(64) → "100"
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">bin <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">bin(number)</div>
+                    <div class="function-description">
+                        Converts a decimal number to binary representation (base 2). Uses only digits 0 and 1. Returns a 64-bit representation.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> number - Decimal number to convert
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> bin(10) → "0000000000000000000000000000000000000000000000000000000000001010"
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>🧮 Mathematical Operations</h2>
+                
+                <div class="function">
+                    <div class="function-name">sqrt <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">sqrt(x)</div>
+                    <div class="function-description">
+                        Calculates the square root of a number. Input must be non-negative.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Non-negative number
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> sqrt(16) → 4.0
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">abs <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">abs(x)</div>
+                    <div class="function-description">
+                        Returns the absolute value of a number (removes negative sign).
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Any numeric value
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> abs(-42) → 42
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">floor <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">floor(x)</div>
+                    <div class="function-description">
+                        Rounds a number down to the nearest integer (towards negative infinity).
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Number to round down
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> floor(3.7) → 3, floor(-2.3) → -3
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">ceil <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">ceil(x)</div>
+                    <div class="function-description">
+                        Rounds a number up to the nearest integer (towards positive infinity).
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> x - Number to round up
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> ceil(3.2) → 4, ceil(-2.7) → -2
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">avg <span class="param-count">Variable parameters</span></div>
+                    <div class="function-syntax">avg(x1, x2, x3, ...)</div>
+                    <div class="function-description">
+                        Calculates the average (arithmetic mean) of multiple numbers. Accepts any number of arguments.
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameters:</strong> Multiple numeric values
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> avg(10, 20, 30, 40) → 25
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>🌡️ Temperature Conversion</h2>
+                
+                <div class="function">
+                    <div class="function-name">c2f <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">c2f(celsius)</div>
+                    <div class="function-description">
+                        Converts temperature from Celsius to Fahrenheit using the formula: F = (C × 1.8) + 32
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> celsius - Temperature in Celsius
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> c2f(0) → 32, c2f(100) → 212
+                    </div>
+                </div>
+                
+                <div class="function">
+                    <div class="function-name">f2c <span class="param-count">1 parameter</span></div>
+                    <div class="function-syntax">f2c(fahrenheit)</div>
+                    <div class="function-description">
+                        Converts temperature from Fahrenheit to Celsius using the formula: C = (F - 32) / 1.8
+                    </div>
+                    <div class="function-params">
+                        <strong>Parameter:</strong> fahrenheit - Temperature in Fahrenheit
+                    </div>
+                    <div class="function-example">
+                        <strong>Example:</strong> f2c(32) → 0, f2c(212) → 100
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Calculator Functions Reference © 2025 | All functions accept numeric inputs and return numeric results (except base conversion functions which return strings)</p>
+        </footer>
+    </div>
+</body>
+</html>

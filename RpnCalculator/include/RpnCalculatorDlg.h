@@ -4,6 +4,7 @@
 
 #pragma once
 #include "RpnCalculator.h"
+#include <afxwin.h>
 
 #define HOTKEY_ID 0x1000
 
@@ -42,9 +43,10 @@ public:
     CStatic m_staticResult;
     afx_msg void OnBnClickedButtonCalc();
     afx_msg void OnBnClickedRadio1();
-    afx_msg void OnBnClickedButton1();
     afx_msg void OnEnChangeEdit1();
     afx_msg void OnBnClickedCancel();
+    afx_msg void OnBnClickedButtonHelp();
+
     CButton InfixButton;
     CButton RpnButton;
 };

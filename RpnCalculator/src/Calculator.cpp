@@ -15,6 +15,7 @@
 
 BEGIN_MESSAGE_MAP(CalculatorApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
+	ON_BN_CLICKED(IDC_BUTTON_HELP, &CalculatorApp::OnBnClickedButtonHelp)
 END_MESSAGE_MAP()
 
 
