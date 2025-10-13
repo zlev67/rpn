@@ -10,7 +10,7 @@ class MOREFUNCS_API Currency :
     char const *URL = "https://open.er-api.com/v6/latest/";
 public:
     Currency();
-    virtual int num_parameters();
+    virtual int num_parameters() const;
 
     virtual std::string calculate(const std::vector<std::string>& args);
 };
@@ -21,7 +21,7 @@ class MOREFUNCS_API Stock :
     char const *URL = "https://query2.finance.yahoo.com/v8/finance/chart/";
 public:
     Stock();
-    virtual int num_parameters();
+    virtual int num_parameters() const;
 
     virtual std::string calculate(const std::vector<std::string>& args);
 };

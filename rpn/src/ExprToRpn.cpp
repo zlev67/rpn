@@ -243,20 +243,14 @@ void FunctionShuntingYard::printRPN(const std::vector<std::string>& rpn) const {
     std::cout << std::endl;
 }
 
-void FunctionShuntingYard::listFunctions() const {
+void FunctionShuntingYard::enumerateFunctions(bool (*scan_func)(std::string const &name,IFunctionInfo const *)) const 
+{
     std::cout << "Available functions:" << std::endl;
-    for (const auto& func : functions) {
-        std::cout << "  " << func.first << "(";
-        if (func.second.get()->num_parameters() == -1)
-            std::cout << "variable parameters";
-        else {
-            for (int i = 0; i < func.second.get()->num_parameters(); ++i) {
-                if (i > 0)
-                    std::cout << ", ";
-                std::cout << "param" << (i + 1);
-            }
-        }
-        std::cout << ")" << std::endl;
+    for (const auto& func : functions) 
+    {
+        bool res = (*scan_func)(func.first, func.second.get());
+        if (res)
+            break;
     }
 }
 

@@ -99,7 +99,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>$(SolutionDir)\rpn\lib\rpn.lib;$(SolutionDir)MoreFuncs\lib\MoreFuncs.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)$(Platform)\$(Configuration)\rpn.lib;$(SolutionDir)$(Platform)\$(Configuration)\MoreFuncs.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -201,7 +201,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="INCLUDE\CALCULATOR.CPP" />
     <ClCompile Include="src\Calculator.cpp" />
     <ClCompile Include="src\RpnCalculatorDlg.cpp" />
   </ItemGroup>

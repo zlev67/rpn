@@ -164,7 +164,7 @@ public:
     }
 
     // Returns the number of parameters the function takes.
-    virtual int num_parameters()
+    virtual int num_parameters() const
     {
         return n_parameters;
     }
@@ -186,7 +186,7 @@ public:
     AverageFunc()
     {
     }
-    virtual int num_parameters()
+    virtual int num_parameters() const
     {
         return -1;
     }
@@ -269,7 +269,7 @@ RpnCalculator::~RpnCalculator()
     delete calc;
 }
 
-std::string RPN_API RpnCalculator::calculate_rpn(const std::string &input_rpn)
+std::string RPN_API RpnCalculator::calculate_rpn(const std::string &input_rpn) const
 {
     std::vector<std::string> rpn = calc->tokenize(input_rpn, true);
     if (verbose)
@@ -278,11 +278,16 @@ std::string RPN_API RpnCalculator::calculate_rpn(const std::string &input_rpn)
     return res;
 }
 
-std::string RPN_API RpnCalculator::calculate(const std::string &input)
+std::string RPN_API RpnCalculator::calculate(const std::string &input) const
 {
     std::vector<std::string> rpn = calc->infixToRPN(input);
     if (verbose)
         calc->printRPN(rpn);
     std::string res = calc->evaluateRPN(rpn);
     return res;
+}
+
+void RPN_API RpnCalculator::enumerateFunctions(bool (*scan_func)(std::string const& name, IFunctionInfo const *)) const
+{
+    calc->enumerateFunctions(scan_func);
 }

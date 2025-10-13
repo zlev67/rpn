@@ -79,11 +79,16 @@ public:
     // Evaluates an expression in RPN format.
     // input_rpn: The RPN expression as a string.
     // Returns: The result as a string.
-    std::string calculate_rpn(const std::string & input_rpn);
+    std::string calculate_rpn(const std::string & input_rpn) const;
 
     // Evaluates an expression in infix format (converts to RPN internally).
     // input: The infix expression as a string.
     // Returns: The result as a string.
-    std::string calculate(const std::string & input);
+    std::string calculate(const std::string & input) const; 
+
+    // creates list of supported functions
+    void enumerateFunctions(bool (*scan_func)(std::string const& name, IFunctionInfo const *)) const;
+
+
 };
 

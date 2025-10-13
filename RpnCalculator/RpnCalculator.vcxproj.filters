@@ -21,9 +21,6 @@
     <ClCompile Include="src\RpnCalculatorDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="INCLUDE\CALCULATOR.CPP">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Calculator.h">

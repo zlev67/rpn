@@ -12,7 +12,7 @@ Currency::Currency()
 {
 }
 
-int Currency::num_parameters()
+int Currency::num_parameters() const
 {
     return 2;
 }
@@ -61,7 +61,7 @@ Stock::Stock()
 {
 }
 
-int Stock::num_parameters()
+int Stock::num_parameters() const
 {
     return 1;
 }

@@ -136,6 +136,6 @@ public:
     std::string evaluateRPN(const std::vector<std::string>& rpn) const;
     // Prints the RPN expression to the standard output.
     void printRPN(const std::vector<std::string>& rpn) const;
-    // Lists all registered functions to the standard output.
-    void listFunctions() const;
+    // enumerate all registered functions to the standard output.
+    void enumerateFunctions(bool (*func)(std::string const& name, IFunctionInfo const *)) const;
 };

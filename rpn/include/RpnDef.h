@@ -71,7 +71,13 @@ class IFunctionInfo
 public:
     // Returns the number of parameters the function takes.
     // For example, a function like sin(x) takes one parameter, while max(a, b) takes two. For functions with variable number of parameters, returns -1
-    virtual int num_parameters() = 0;
+    virtual int num_parameters() const = 0;
+
+    // Returns the function description.
+    virtual std::string description() const 
+    {
+        return ""; 
+    }
 
     // Performs the calculation for the function given its arguments.
     // Args:

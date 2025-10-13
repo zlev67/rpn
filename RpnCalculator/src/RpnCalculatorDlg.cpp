@@ -1,4 +1,5 @@
 // RpnMfcAppDlg.cpp
+#include <string>
 #include "framework.h"
 #include "Calculator.h"
 #include "RpnCalculatorDlg.h"
@@ -132,9 +133,23 @@ END_MESSAGE_MAP()
 
 void CRpnCalculatorDlg::OnBnClickedButtonHelp()
 {
-    HINSTANCE result = ShellExecute(NULL, _T("open"),
-        _T("https://www.example.com"),
-        NULL, NULL, SW_SHOWNORMAL);
+    CString exePath;
+    GetModuleFileName(NULL, exePath.GetBuffer(MAX_PATH), MAX_PATH);
+    exePath.ReleaseBuffer();
+    exePath = exePath.Left(exePath.ReverseFind('\\'));
+
+    CString docPath = exePath + L"\\calc_functions_doc.html";
+
+    if (!PathFileExists(docPath))
+    {
+        MessageBox(L"Help file not found:\n" + docPath, L"Error", MB_ICONERROR);
+        return;
+    }
+
+    if ((INT_PTR)ShellExecute(NULL, L"open", docPath, NULL, NULL, SW_SHOWNORMAL) <= 32)
+    {
+        MessageBox(L"Failed to open help file", L"Error", MB_ICONERROR);
+    }
 }
 
 void CRpnCalculatorDlg::OnBnClickedRadio1()
