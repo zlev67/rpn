@@ -38,7 +38,7 @@
 // Interface representing operator information for the FunctionShuntingYard class.
 // This interface defines the contract for operators, including their precedence,
 // associativity, number of parameters, and calculation logic.
-class IOperatorInfo
+class RPN_API IOperatorInfo
 {
 public:
     virtual ~IOperatorInfo() = default;
@@ -66,7 +66,7 @@ public:
 // Interface representing function information for the FunctionShuntingYard class.
 // This interface defines the contract for functions, including their arity
 // (number of parameters) and calculation logic.
-class IFunctionInfo
+class RPN_API IFunctionInfo
 {
 public:
     // Returns the number of parameters the function takes.
