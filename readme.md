@@ -1,53 +1,63 @@
-# RPN Calculator
-
-## Overview
+RPN Calculator
+Overview
 
 This project provides:
-- **RPN Calculator DLL**: A reusable C++14 library for parsing and evaluating mathematical expressions using Reverse Polish Notation (RPN). The DLL is designed for extensibility, allowing users to implement custom functions and operators. It is also capable of converting infix notation to RPN and calculating the result of the expression.
-- **MoreFunctions**: examples of complex functions implementations: retrieving stok by name, retrieving currency conversion, etc.
-- **RPN Calculator Executable**: A standalone calculator application that leverages the DLL for RPN and infix expression evaluation.
-- **c**: command line calculator to quickly execute the calculation; 
 
----
+RPN Calculator DLL
+A reusable C++14 library for parsing and evaluating mathematical expressions using Reverse Polish Notation (RPN).
+The DLL is designed for extensibility, allowing users to implement custom functions and operators.
+It can also convert infix notation to RPN and calculate the result of the expression.
 
-## Features
+MoreFunctions
+Examples of complex function implementations such as retrieving stock data by name or currency conversion.
 
-- Supports both infix and RPN (postfix) notation.
-- Can convert infix expressions to RPN automatically and evaluate them.
-- Built-in standard mathematical functions and operators, including:
-  - Arithmetic: `+`, `-`, `*`, `/`, `%`, `**`, `|`, `&`, `^`, `<<`, `>>`
-  - Functions: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `ln`, `lg`, `expn`, `sqrt`, `abs`, `floor`, `ceil`, `log`, `pow`, `avg`, `g2r`, `r2g`, `hex`, `oct`, `bin`, etc.
-- Easily extensible: users can add custom functions and operators by implementing simple interfaces.
+RPN Calculator Executable
+A standalone graphical calculator application that leverages the DLL for infix and RPN expression evaluation.
 
----
+Command-Line Calculator (c.exe)
+A lightweight console tool for quick calculations directly from the command line.
 
-## RPN Calculator DLL
+✨ Features
 
-### Usage
+Supports both infix and RPN (postfix) notation.
 
-1. **Include the DLL header** in your project:
-```cpp
+Can automatically convert infix expressions to RPN and evaluate them.
+
+Built-in standard mathematical functions and operators, including:
+
+Operators: +, -, *, /, %, **, |, &, ^, <<, >>
+
+Functions: sin, cos, tan, asin, acos, atan, ln, lg, expn, sqrt, abs, floor, ceil, log, pow, avg, g2r, r2g, hex, oct, bin, etc.
+
+Easily extensible: users can add custom functions and operators by implementing simple interfaces.
+
+🧩 RPN Calculator DLL
+Usage
+
+Include the DLL header in your project:
+
 #include "RpnCalculator.h"
-```
 
-2. **Link against the DLL** and ensure the DLL is available at runtime.
 
-3. **Create and use the calculator:**
-```cpp
+Link against the DLL and ensure the DLL is available at runtime.
+
+Create and use the calculator:
+
 RpnCalculator calc;
 calc.addStandardFunctions();
 calc.addStandardOperators();
-std::string result = calc.calculate("2 + 2 * 2"); // Infix expression
+
+std::string result = calc.calculate("2 + 2 * 2");         // Infix expression
 std::string rpn_result = calc.calculate_rpn("2 2 2 * +"); // RPN expression
-```
 
-4. **Extend with custom functions/operators:**
-    - Implement the `IFunctionInfo` or `IOperatorInfo` interface.
-    - Register your implementation using `addFunction` or `addOperator`.
 
-### Example: Adding a Custom Function
+Extend with custom functions/operators:
 
-```cpp
+Implement the IFunctionInfo or IOperatorInfo interface.
+
+Register your implementation using addFunction or addOperator.
+
+Example: Adding a Custom Function
 class MyFunc : public IFunctionInfo {
 public:
     int num_parameters() override { return 1; }
@@ -56,45 +66,146 @@ public:
         return args[0];
     }
 };
+
+// Registration example
 calc.addFunction("myfunc", std::unique_ptr<MyFunc>(new MyFunc()));
-```
 
----
+🖥️ RPN Calculator Executable
 
-## RPN Calculator Executable
+The graphical executable provides a user-friendly interface for evaluating expressions in both infix and RPN notation.
 
-The executable provides a user-friendly interface for evaluating expressions in both infix and RPN notation.
+Features
 
-### Features
+Input expressions in infix or RPN form.
 
-- Input expressions in infix or RPN.
-- View results instantly.
-- Switch between modes using radio buttons.
-- Error handling and informative messages.
+View results instantly.
 
-### Running
+Switch between modes using radio buttons.
+
+Clear error handling and informative messages.
+
+Running
 
 Simply build and run the executable. Enter your expression and select the desired mode.
 
-You can bring up or close the application window at any time by pressing **Ctrl+Shift+R**.
+You can bring up or close the application window at any time by pressing Ctrl + Shift + R.
 
----
+⚙️ Command-Line Calculator (c.exe)
 
-## Extending the Calculator
+The c.exe tool is a lightweight command-line interface for the RPN Calculator library.
+It enables quick evaluation of expressions directly from a terminal or script.
+
+Usage
+List all functions and operators
+c -l
+
+Calculate an RPN (postfix) expression
+c -r "2 3 + 4 *"
+
+
+Output:
+
+20
+
+Calculate an infix expression
+c "2 + 3 * 4"
+
+
+Output:
+
+14
+
+Notes
+
+The tool automatically loads standard functions and operators from the RPN DLL.
+
+Useful for:
+
+Command-line calculations
+
+Integration into automation scripts
+
+Quick testing of expressions
+
+Supports all features of the RPN Calculator, including custom functions and conversions.
+
+🧮 Examples
+
+Here are some practical command-line examples:
+
+Basic Arithmetic
+c "5 + (3 * 2) - 4 / 2"
+
+
+Output:
+
+9
+
+Using Functions
+c "pow(2, 3) + sqrt(16)"
+
+
+Output:
+
+12
+
+Trigonometry
+c "sin(0.5) + cos(0.5)"
+
+
+Output:
+
+1.357008
+
+Conversion and Bitwise
+c "hex(255)"
+# Output: FF
+
+c "bin(13)"
+# Output: 1101
+
+c "15 & 7"
+# Output: 7
+
+RPN Mode
+c -r "2 3 4 * +"
+
+
+Output:
+
+14
+
+Listing Available Functions
+c -l
+
+
+Sample output:
+
+Available functions:
+abs, avg, bin, ceil, cos, expn, floor, g2r, hex, lg, ln, log, oct, pow, r2g, sin, sqrt, tan, ...
+
+🧠 Extending the Calculator
 
 To add new functions or operators:
-1. Implement the appropriate interface (`IFunctionInfo` or `IOperatorInfo`).
-2. Register your implementation with the calculator instance using `addFunction` or `addOperator`.
 
----
+Implement the appropriate interface (IFunctionInfo or IOperatorInfo).
 
-## Building
+Register your implementation with the calculator instance using addFunction or addOperator.
 
-- Requires a C++14-compatible compiler.
-- Open the solution in Visual Studio and build both the DLL and the executable.
+🏗️ Building
 
----
+Requires a C++14-compatible compiler.
 
-## License
+Open the solution in Visual Studio and build:
 
-MIT License. See [LICENSE](LICENSE) for details.
+The DLL
+
+The GUI executable
+
+The c.exe command-line tool
+
+📄 License
+
+MIT License
+See LICENSE
+ for details.
